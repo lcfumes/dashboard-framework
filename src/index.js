@@ -1,23 +1,24 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import store, { history } from './store'
-import App from './containers/app'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import store, { history } from './store';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import App from './containers/app';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import './index.css'
+import './index.css';
 
+injectTapEventPlugin();
 const target = document.querySelector('#root')
-
-console.log(store);
 
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
+      <MuiThemeProvider>
         <App />
-      </div>
+      </MuiThemeProvider>
     </ConnectedRouter>
   </Provider>,
   target
-)
+);
